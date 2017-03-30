@@ -54,12 +54,10 @@
     "test:lint": "eslint . --ext .js --cache",
     "test:watch": "jest --watch --",
     "dist:build": "rimraf ./dist && babel ./src --out-dir ./dist",
-    "preversion": "npm run test:all && npm run dist:build && git commit --allow-empty -am \"Update dist\"",
+    "preversion": "npm run dist:build",
     "postpublish": "npm run gh-pages:build && npm run gh-pages:deploy",
     "prepublish": "project-defaults -t react",
-    "start": "webpack-dev-server",
-    "gh-pages:build": "webpack",
-    "gh-pages:deploy": "gh-pages -d gh-pages"
+    "start": "webpack-dev-server"
   },
   "main": "dist",
   "keywords": [
@@ -86,7 +84,7 @@
     "semantic-ui-react": "^0.67.1"
   },
   "name": "reactabular-semantic-ui",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Reactabular wrapper for semantic-ui",
   "repository": {
     "type": "git",
