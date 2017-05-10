@@ -84,7 +84,7 @@
     "semantic-ui-react": "^0.67.1"
   },
   "name": "reactabular-semantic-ui",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Reactabular wrapper for semantic-ui",
   "repository": {
     "type": "git",

@@ -10,7 +10,7 @@ http://react.semantic-ui.com/collections/table
 ```jsx
 
 import * as Table from 'reactabular-table';
-import componentsWrapper from 'reactabular-material-ui';
+import componentsWrapper from 'reactabular-semantic-ui';
 
 
 
@@ -51,7 +51,7 @@ const combinedProps = {
     }
     //Semantic UI React <Table.HeaderCell /> component props in object format
     tableHeaderCell: { 
-      textAligmne: {ascending},
+      textAlign: 'right',
     }
     //Semantic UI React <Table.Row /> component props in object format
     tableRow: { 
