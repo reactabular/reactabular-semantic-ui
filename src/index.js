@@ -1,75 +1,87 @@
-import React from 'react';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { Table } from "semantic-ui-react";
 
-import { Table } from 'semantic-ui-react'
+export const TableWrapper = props =>
+  class extends PureComponent {
+    static propTypes = {
+      children: PropTypes.any
+    };
 
-const tableWrapper = (props) => ({children}) => (
-  <Table {...props}>
-    {children}
-  </Table>
-)
-tableWrapper.propTypes = {
-  children: React.PropTypes.any
-};
+    render() {
+      return <Table {...props}>{this.props.children}</Table>;
+    }
+  };
 
-const tableHeaderWrapper = (props) => ({children}) => (
-  <Table.Header {...props}>
-    {children}
-  </Table.Header>
-)
-tableHeaderWrapper.propTypes = {
-  children: React.PropTypes.any
-};
+export const RowWrapper = props =>
+  class extends PureComponent {
+    static propTypes = {
+      children: PropTypes.any
+    };
 
-const tableHeaderCellWrapper = (props) => ({children}) => (
-  <Table.HeaderCell {...props}>
-    {children}
-  </Table.HeaderCell>
-)
-tableHeaderCellWrapper.propTypes = {
-  children: React.PropTypes.any
-};
+    render() {
+      return <Table.Row {...props}>{this.props.children}</Table.Row>;
+    }
+  };
 
-const tableBodyWrapper = (props) => ({children}) => (
-  <Table.Body {...props}>
-    {children}
-  </Table.Body>
-)
-tableBodyWrapper.propTypes = {
-  children: React.PropTypes.any
-};
+export const HeaderWrapper = props =>
+  class extends PureComponent {
+    static propTypes = {
+      children: PropTypes.any
+    };
 
-const tableRowWrapper = (props) => ({children}) => (
-  <Table.Row {...props}>
-    {children}
-  </Table.Row>
-)
-tableRowWrapper.propTypes = {
-  children: React.PropTypes.any
-};
+    render() {
+      return <Table.Header {...props}>{this.props.children}</Table.Header>;
+    }
+  };
 
-const tableCellWrapper = (props) => ({children}) => (
-  <Table.Cell {...props}>
-    {children}
-  </Table.Cell>
-)
-tableCellWrapper.propTypes = {
-  children: React.PropTypes.any
-};
+export const HeaderCellWrapper = props =>
+  class extends PureComponent {
+    static propTypes = {
+      children: PropTypes.any
+    };
 
-const semanticTableComponents = (props = {}) => {
-  return ({
-    table: tableWrapper(props.tableProps),
+    render() {
+      return (
+        <Table.HeaderCell {...props}>{this.props.children}</Table.HeaderCell>
+      );
+    }
+  };
+
+export const BodyWrapper = props =>
+  class extends PureComponent {
+    static propTypes = {
+      children: PropTypes.any
+    };
+
+    render() {
+      return <Table.Body {...props}>{this.props.children}</Table.Body>;
+    }
+  };
+
+export const BodyCellWrapper = props =>
+  class extends PureComponent {
+    static propTypes = {
+      children: PropTypes.any
+    };
+
+    render() {
+      return <Table.Cell {...props}>{this.props.children}</Table.Cell>;
+    }
+  };
+
+export default (props = {}) => {
+  return {
+    table: TableWrapper(props.tableProps),
     header: {
-      wrapper: tableHeaderWrapper(props.tableHeader),
-      row: tableRowWrapper(props.tableHeaderRow),
-      cell: tableHeaderCellWrapper(props.tableHeaderCell),
+      wrapper: HeaderWrapper(props.headerProps),
+      row: RowWrapper(props.headerRowProps),
+      cell: HeaderCellWrapper(props.headerCellProps)
     },
     body: {
-      wrapper: tableBodyWrapper(props.tableBody),
-      row: tableRowWrapper(props.tableBodyRow),
-      cell: tableCellWrapper(props.tableBodyCell),
-    },
-  })
-}
-
-export default semanticTableComponents;
+      wrapper: BodyWrapper(props.bodyProps),
+      row: RowWrapper(props.bodyRowProps),
+      cell: BodyCellWrapper(props.bodyCellProps)
+    }
+  };
+};
